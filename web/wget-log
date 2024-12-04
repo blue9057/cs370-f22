@@ -1,0 +1,11 @@
+--2022-09-22 03:38:58--  https://www.macworld.com/wp-content/uploads/2022/06/sale_313629_article_image.jpeg?quality=50
+Resolving www.macworld.com (www.macworld.com)... 192.0.66.31, 2a04:fa87:fffd::c000:421f
+Connecting to www.macworld.com (www.macworld.com)|192.0.66.31|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 286860 (280K) [image/jpeg]
+Saving to: ‘sale_313629_article_image.jpeg?quality=50’
+
+sale_313629_article_image.jpeg?quality=50     0%[                                                                                            ]       0  --.-KB/s               sale_313629_article_image.jpeg?quality=50   100%[===========================================================================================>] 280.14K  --.-KB/s    in 0.03s   
+
+2022-09-22 03:38:58 (9.60 MB/s) - ‘sale_313629_article_image.jpeg?quality=50’ saved [286860/286860]
+

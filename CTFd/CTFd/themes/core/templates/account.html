@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+<div class="jumbotron">
+	<div class="container">
+		<h1>Server Account Registration</h1>
+	</div>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 offset-md-3">
+			{% for error in errors %}
+				<div class="alert alert-danger alert-dismissable" role="alert">
+				  <span class="sr-only">Error:</span>
+				  {{ error }}
+				  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button>
+				</div>
+			{% endfor %}
+			<form method="post" accept-charset="utf-8" id='usrform' autocomplete="off" role="form" class="form-horizontal">
+				<div class="form-group">
+					<label for="name-input">
+						Server Account Name
+					</label>
+					<input class="form-control" type="text" name="username" placeholder="Enter the server account name you wish to have..." id="name-input" {% if name %}value="{{ name }}"{% endif %} />
+				</div>
+                <input type="hidden" id='hidden-pubkey' name="pubkey" />
+				<input type="hidden" name="nonce" value="{{ nonce }}" />
+            </form>
+
+            <div class="form-group">
+                <label for="email-input">
+                    SSH Public Key
+                </label>
+                <br />
+                <textarea length="1024" id='pubkeytext' rows="10" cols = "65" form="usrform" placeholder="Enter your SSH public key here..."></textarea>
+                <br />
+            </div>
+
+            <script type="text/javascript">
+function submitit() {
+    var text = document.getElementById('pubkeytext').value;
+    //alert(text);
+    document.getElementById('hidden-pubkey').value = text;
+    //alert(document.getElementById('hidden-pubkey').value);
+    document.getElementById('usrform').submit();
+}
+            </script>
+
+            <div class="row pt-3">
+                <div class="col-md-12">
+                    <button type="submit" id="submit" onclick="javascript:submitit()" tabindex="5" class="btn btn-md btn-primary btn-outlined float-right">Submit</button>
+                </div>
+            </div>
+
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

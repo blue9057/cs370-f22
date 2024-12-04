@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+<script>
+function delete_file(fn) {
+  if(confirm("Are you sure to delete " + fn + "?")) {
+    location.href='/delete-file?file=' + fn;
+  }
+  else {
+    // do nothing
+  }
+}
+
+function submit_form() {
+  var form = document.getElementById('upload-form');
+
+  if(form.file.value.length == 0) {
+    alert("Please choose a file to submit your writeup.");
+    location.href='/upload';
+    return;
+  }
+
+  var type = form.type.value;
+  if(confirm("Are you sure to submit your writeup for " + type + "?")) {
+    form.submit();
+  }
+  else {
+  }
+}
+
+</script>
+<div class="jumbotron">
+	<div class="container">
+    <h1>Upload for {{ team.name }} </h1>
+	</div>
+</div>
+<div class="container">
+  <p align='center'>
+  <form action="/upload-file" id='upload-form' method='post' enctype='multipart/form-data'>
+    File: <input type=file name=file>
+    Type:
+      <select name="type">
+      <option value="week2">Week2</option>
+      <option value="week3">Week3</option>
+      <option value="week4">Week4</option>
+      <option value="week5">Week5</option>
+      <option value="week6">Week6</option>
+      <option value="week7">Week7</option>
+      <option value="week8">Week8</option>
+      <option value="week9">Week9</option>
+      </select>
+      <input id="nonce" name='nonce' type='hidden' value="{{ nonce }}">
+      <!-- <input type=submit value=Upload> -->
+      <button onclick='javascript:submit_form();'>Upload</button>
+  </form>
+  </p>
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<td><b>Type</b></td>
+						<td><b>Filename</b></td>
+            <td><b>Size</b></td>
+            <td><b>Upload Time</b></td>
+            <td><b>Download</b></td>
+            <td><b>Delete</b></td>
+					</tr>
+				</thead>
+        <tbody>
+          {% for f_stat in files %}
+            <tr>
+              <td> {{ f_stat[0] }} </td>
+              <td> {{ f_stat[1] }} </td>
+              <td> {{ f_stat[3] }} </td>
+              <td> {{ f_stat[2] }} </td>
+              <td> <a href="/download-file?file={{ f_stat[1] }}">Download</a> </td>
+              <td> <a href='javascript:delete_file("{{ f_stat[1] }}");'>Delete</a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+			</table>
+		</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

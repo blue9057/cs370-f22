@@ -1,0 +1,278 @@
+# -*- text -*-
+#
+# To generate the calendar: ./schedule.py > schedule.shtml
+#
+# This file follows a mostly self-documenting format for describing
+# calendar data.  Any line that begins with # is a comment.  A line of
+# the form "== Name ==" begins a new layer in the calendar.
+#
+# A line containing a date expression or a hyphen-separated date rate
+# moves forward to the next date (or date range) that satisfies that
+# expression.  Dates can be given in absolute form as "<Abbreviated
+# month> <day>, <year>", in relative form as the name of a weekday, as
+# the name of a layer (which represents all dates used by that layer)
+# or as a named date definition.  These can be combined with "and",
+# "or", "not", and parens in the expected way.  A line of the form
+# "NAME = DATE-EXPR" defines a named date definition.
+
+# A line that begins with "- " and any indented lines that follow it
+# add items to the current date:
+#
+# - Holiday[: text]
+# - Special[: text]
+# - Lec: <text>
+# - Rec: <text>
+# - Tut: <text>
+# - Prep [sections]: <text>
+# - Due: <text>
+# - Text [CSS class]: <text>
+#
+# <text> in any of these may be arbitrary HTML text, with the added
+# convenience that the form "[href text...]" is converted to a
+# hyperlink.
+#
+# Finally, {{raw}} directly emits raw html, after finishing the
+# current calendary week (if there is one).
+
+{{
+<table class="calendar" cellspacing="0" cellpadding="6" width="100%">
+ <thead>
+  <tr>
+   <td width="7%">Monday</td><td width="35%">Tuesday</td>
+   <td width="7%">Wednesday</td><td width="35%">Thursday</td>
+   <td width="6%">Friday</td>
+  </tr>
+ </thead>
+}}
+
+##################################################################
+# Calendar data
+#
+
+== Holidays ==
+
+Oct 13, 2022
+- Holiday: No class
+
+Oct 20, 2022
+- Holiday: Quiz 1 (Cryptography and Network Security)
+
+Oct 27, 2022
+- Holiday: No class
+
+Nov 11, 2022
+- Holiday: Veterans Day
+
+Nov 15, 2022
+- Holiday: No class
+
+Nov 22, 2022 - Nov 23, 2022
+- Holiday: Quiz 2 (Authentication, Web, and Software security)
+
+Nov 24, 2022
+- Holiday: Thanksgiving Day (work on nsa-codebreaker!)
+
+Nov 24, 2022 - Nov 28, 2022
+- Holiday: Quiz 2 (Authentication, Web, and Software security)
+
+Dec 5, 2022 - Dec 9, 2022
+- Holiday: Final exam week<br>(No final!)
+
+== Special ==
+
+Sep 22, 2022
+- Special: First day of class
+
+Dec 1, 2022
+- Special: The last day of class
+
+Dec 9, 2022
+- Due: NSA Codebreaker Challenges!!
+
+##################################################################
+
+== Lectures ==
+
+LEC = (Tue or Thr) and not Holidays
+
+# 0: Intro
+LEC
+- Lec: Course Introduction [https://youtu.be/ckB2CKcp8CU VIDEO] [https://cs370.unexploitable.systems/l/W1L1.pdf PDF] [https://cs370.unexploitable.systems/l/W1L1.pptx PPTX]
+- Prep: Finish [https://cs370.unexploitable.systems/rules.html Registration]
+
+# 1-1: Crypto basics
+LEC
+- Lec: Ancient Cryptography and Cryptography Basics [https://youtu.be/y3qg4W-BlFU VIDEO] [l/W2L1.pdf PDF] [l/W2L1.pptx PPTX]
+
+# 1-2: DES/AES and cracking
+LEC
+- Lec: Block Cipher and Symmetric Encryption (DES/AES) [https://youtu.be/neDryaDBIaE VIDEO] [l/W2L2.pdf PDF] [l/W2L2.pptx PPTX]
+- Prep: Challenge [_static/encrypted.bmp BMP_EXAMPLE]
+- Prep: Tutorial [l/python_tutorial.py PY]
+# 1-3: RSA & DH
+LEC
+- Lec: Block Cipher Modes [https://youtu.be/amgAPEDhmc0 VIDEO] [l/W3L1.pdf PDF] [l/W3L1.pptx PPTX]
+
+# 1-4: MD5 and SHA1,2,3, HMAC and their cracks
+LEC
+- Lec: Asymmetric Encryption, Digital Signatures,  Cryptographic Hash (MD5/SHA1--3) and Message Authentication Code (MAC) [https://youtu.be/C4CVJHdUEt0 VIDEO] [l/W3L2.pdf PDF] [l/W3L2.pptx PPTX]
+
+# 2-1: Network Security
+LEC
+- Lec: Public-key Infrastructure (PKI), Digital Certificates, Diffie--Hellman [https://youtu.be/ADA-NNHRtkQ VIDEO] [l/W4L1.pdf PDF] [l/W4L1.pptx PPTX]
+- Due: Cryptography challenges
+
+LEC
+- Lec: Quiz 1 prep (cryptography and network security) [https://www.youtube.com/watch?v=wneMlemOAfQ VIDEO] [l/W5L1.pdf PDF] [l/W5L1.pptx PPTX]
+
+# 2-2: PKI and certificates
+LEC
+- Lec: Secure Socket Layer (SSL) and Transport Layer Security (TLS) [https://youtu.be/oNaUM1Z3ld8 VIDEO] [l/W6L1.pdf PDF] [l/W6L1.pptx PPTX]
+
+# 3-1: User Authentication
+# 3-2: Multi-factor Authentication
+
+
+# 4-1
+LEC
+- Lec: Web Security Basics (Password and SQL Injection) [https://youtu.be/8NR1DD3rxmM VIDEO] [l/W7L1.pdf PDF] [l/W7L1.pptx PPTX]
+- Due: SSL/TLS and PKI challenges
+
+# 4-2
+LEC
+- Lec: Advanced Web Security (XSS, CSRF, etc.) [https://www.youtube.com/watch?v=wAlFSdiGofc VIDEO] [l/W7L2.pdf PDF] [l/W7L2.ppdf PPTX]
+
+# 5-1: Access Control
+LEC
+- Lec: Codebreaker Prep 1 (network security) [https://canvas.oregonstate.edu/courses/1890481/announcements VIDEO_LINK_IN_CANVAS] [l/W8L1.pdf PDF] [l/W8L1.pptx PPTX]
+
+# 5-2: Advanced Access Control
+LEC
+- Lec: Codebreaker Prep 2 (web/software security) [https://canvas.oregonstate.edu/courses/1890481/announcements VIDEO_LINK_IN_CANVAS] [l/W8L1.pdf PDF] [l/W8L1.pptx PPTX]
+
+LEC
+- Lec: Software Vulnerabilities (Buffer overflow, Logic bugs, etc.) [https://youtu.be/iP5Vuf3U2eM VIDEO] [l/W9L1.pdf PDF] [l/W9L1.pptx PPTX]
+- Due: Authentication and Web Security challenges
+
+
+LEC
+- Lec: Software Attacks [https://www.youtube.com/watch?v=mguAC48TrvU VIDEO] [l/W10L1.pdf PDF] [l/W10L1.pptx PPTX]
+
+LEC
+- Lec: Malware [https://www.youtube.com/watch?v=IutVYQoTaMU VIDEO] [l/W10L2.pdf PDF] [l/W10L2.pptx PPTX]
+- Due: Software Security challenges
+
+#LEC
+#- Lec: Break (tutorials will be released later)
+
+# 4-1
+#LEC
+#- Lec: Shellcode Tricks [l/lab04/W4L0.pdf PDF] [l/lab04/W4L0.pptx PPTX] [https://youtu.be/2jinO8Uv3GA VIDEO]
+#- Tut: short-shellcode [https://youtu.be/i67DUx548Cs VIDEO]
+
+#- Tut: tutorial [l/lab02/tutorial-pwntools.txt TXT]
+#- Prep: READ [https://github.com/Gallopsled/pwntools-tutorial/tree/master/walkthrough Pwntools]
+#- Prep: READ [http://acg.cis.upenn.edu/papers/pldi09_softbound.pdf SoftBound]
+#- Prep: READ [https://www.usenix.org/legacy/publications/library/proceedings/sec98/full_papers/cowan/cowan.pdf StackGuard]
+
+#
+# 8-1
+#- Lec: No lecture
+#- Tut: tutorial [https://youtu.be/5FGKKj1fVXU VIDEO]
+#- Lec: Defenses Against AR/AW
+#[l/lab07/W7L1.pdf PDF] [l/lab07/W7L1.pptx PPTX]
+#- Tut: tutorial [l/lab07/fs-code-exec-32.py PY]
+#
+
+#LEC
+#- Lec: TBD
+#- Due: Week 7
+
+#LEC
+#- Lec: [l/lab01/slides-2.pdf Warm-up: x86, Tools]
+#- Tut: [l/lab01/README-tut.txt GDB/x86]
+#- Prep: Read [http://www.google.com asm]
+
+#LEC
+#- Lec: [l/lab02/slides.pdf Warm-up: x86_64, Shellcode, Tools]
+#- Tut: [l/lab02/README-tut.txt PEDA, Shellcode] ([http://www.youtube.com/watch?v=knC3B3RKARo video]/[http://ropshell.com/peda/Linux_Interactive_Exploit_Development_with_GDB_and_PEDA_Slides.pdf slides])
+#- Prep: Read [https://www.cs.cmu.edu/~fp/courses/15213-s07/misc/asm64-handout.pdf x86_64]
+
+#LEC
+#- Lec: Writing exploits
+#- Tut: IDA, Your first control hijacking
+#- Prep: Read [http://phrack.org/issues/49/14.html Phrack #49-14]
+
+#LEC
+#- Lec: Exploiting stack overflows
+#- Tut: Pwntool, Your first exploit!
+#- Prep: Read [http://docs.pwntools.com/en/stable/intro.html pwntools]
+# - Prep: Read [https://codebreaker.ltsnet.net/resources NSA Codebreaker Challenge]
+
+#LEC
+#- Lec: Stack Protections
+#- Tut: Bypassing Stack Canaries
+#- Prep: Read [https://www.coresecurity.com/system/files/publications/2017/05/StackguardPaper.pdf Bypassing StackShield]
+
+#LEC
+#- Lec: DEP and ASLR
+#- Tut: Format string vulnerability
+#- Prep: Read [http://www.utdallas.edu/~zhiqiang.lin/file/aslr.pdf ASLR Smack & Laugh Reference]
+
+#LEC
+#- Lec: Return-oriented Programming (ROP)
+#- Tut: Your first ROP
+#- Prep: Read [https://cseweb.ucsd.edu/~hovav/dist/rop.pdf ROP]
+
+#LEC
+
+#LEC
+#- Lec: Remote Exploitation
+#- Tut: Socket Programming in Python!
+
+#LEC
+#- Lec: Miscellaneous I
+#- Tut: Make Reliable Exploit
+
+#LEC
+#- Lec: Heap Memory Allocation
+#- Tut: Your first heap exploit
+
+#LEC
+#- Lec: Miscellaneous 2
+#- Tut: Fuzzing and symbolic execution
+
+#LEC
+#- Lec: Exploitation on Windows
+
+#LEC
+#- Lec: Kernel exploitation
+
+# LEC
+# - Lec: Web explotiation
+# - Tut: Your first xss/sqlinj
+
+# LEC
+# - Lec: [l/lab12-last/ios-security.pdf iOS Security]
+
+##################################################################
+
+== Labs ==
+
+{{LABS}}
+
+##################################################################
+
+{{
+</table>
+<p>
+<script type="text/javascript">
+var d = new Date();
+for (var fwd = 0; fwd < 3; fwd++) {
+  var i = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+  var e = document.getElementById(i);
+  if (e) { e.style.border = '2px solid blue'; break; }
+  d.setTime(d.getTime() + 24*60*60*1000);
+}
+</script>
+}}

@@ -1,0 +1,58 @@
+#!/usr/bin/env python3
+
+# enums
+LAB1_MAX = 50
+LAB2_MAX = 70
+LAB3_MAX = 80
+LAB4_MAX = 80
+
+QUIZ1_MAX = 11
+QUIZ2_MAX = 9
+QUIZ3_MAX = 13
+
+LAB1_WEIGHT = 0.10
+LAB2_WEIGHT = 0.15
+LAB3_WEIGHT = 0.20
+LAB4_WEIGHT = 0.25
+
+QUIZ1_WEIGHT = 0.1
+QUIZ2_WEIGHT = 0.1
+QUIZ3_WEIGHT = 0.1
+
+PENALTY = 1
+
+#  0 'Student'
+IDX_STUDENT = 0
+#  1 'ID'
+IDX_ID = 1
+#  2 'SIS User ID'
+IDX_USER_ID = 2
+IDX_OSU_ID = 2
+#  3 'SIS Login ID'
+IDX_LOGIN_ID = 3
+IDX_OSU_EMAIL = 3
+#  4 'Section'
+IDX_SECTION = 4
+#  5 'Lab 1 (7919307)'
+IDX_LAB1 = 5
+#  6 'Lab 2 (7919308)'
+IDX_LAB2 = 6
+IDX_LAB3 = 7
+IDX_LAB4 = 8
+#  12'Quiz 1 (7929178)'
+IDX_QUIZ1 = 14
+#  13'Quiz 2 (7929201)'
+IDX_QUIZ2 = 15
+#  14'Quiz 3 (7929202)'
+IDX_QUIZ3 = 16
+#  15'Lab1 extra credit (7930161)'
+IDX_LAB1E1 = 9
+#  16'Lab2 Extra Credit (7930162)'
+IDX_LAB2E1 = 10
+#  17'Lab3 Extra Credit 1 (7930163)'
+IDX_LAB3E1 = 11
+#  18'Lab3 Extra Credit 2 (7930164)'
+IDX_LAB3E2 = 12
+
+IDX_GRADE = 13
+IDX_LETTER = 34

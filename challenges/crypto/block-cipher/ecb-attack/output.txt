@@ -1,0 +1,43 @@
+
+
+A random key: '????????????????????????????????'
+
+
+Data before encryption (raw, 16-byte in each row):
+'0000000000000001'		 <= uid
+'notadministrator'		 <= username
+'passwordpassword'		 <= password
+'The sky is blue,'		 <= message 0
+' cs370 crypto is'		 <= message 1
+' a boring class.'		 <= message 2
+'0000000000000000'		 <= is_admin
+
+
+Data before encryption (hex, 16-byte in each row):
+'30303030303030303030303030303031'		 <= uid
+'6e6f7461646d696e6973747261746f72'		 <= username
+'70617373776f726470617373776f7264'		 <= password
+'54686520736b7920697320626c75652c'		 <= message 0
+'2063733337302063727970746f206973'		 <= message 1
+'206120626f72696e6720636c6173732e'		 <= message 2
+'30303030303030303030303030303030'		 <= is_admin
+
+
+Data after encryption (raw, 16-byte in each row):
+'\xe9y\x82\xe7\r\xfc\xa8\xc9\x89\t\xe8\xc5g\xa65\x00'             		 <= uid
+'\x1f\x19IM\x84\x00y\xdbMF\xbbY\x19\xb3\xe2\xce'                  		 <= username
+'\x0c*\x8d\x17\x83\x86vd\xaa\x90\x15\x18\x18k\x17\x8f'            		 <= password
+'yr\n\xab\xc5\xb7\x01\xda;\x17)\x9dn\xc0\xb5\xf1'                 		 <= message 0
+':\x91\xe2\xe7I\xd8\xea\x18\x1b\x0e\xa9\xc8\xa6\xfaQ\xf3'         		 <= message 1
+'l\xf7o\xab\xe5p\xe3\x93.\xf5\xdb0\xaa\xb5\xa9\xe7'               		 <= message 2
+'\x9c\xdeu\xd4}}\xf3\xea\xfc\xcc\xb9\xa2\x11\xcf\x08\xe8'         		 <= is_admin
+
+
+Data after encryption (hex, 16-byte in each row):
+'e97982e70dfca8c98909e8c567a63500'		 <= uid
+'1f19494d840079db4d46bb5919b3e2ce'		 <= username
+'0c2a8d1783867664aa901518186b178f'		 <= password
+'79720aabc5b701da3b17299d6ec0b5f1'		 <= message 0
+'3a91e2e749d8ea181b0ea9c8a6fa51f3'		 <= message 1
+'6cf76fabe570e3932ef5db30aab5a9e7'		 <= message 2
+'9cde75d47d7df3eafcccb9a211cf08e8'		 <= is_admin

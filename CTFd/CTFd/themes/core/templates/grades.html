@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+<script>
+function delete_file(fn) {
+  if(confirm("Are you sure to delete " + fn + "?")) {
+    location.href='/delete-file?file=' + fn;
+  }
+  else {
+    // do nothing
+  }
+}
+
+function submit_form() {
+  var form = document.getElementById('upload-form');
+
+  if(form.file.value.length == 0) {
+    alert("Please choose a file to submit your writeup.");
+    location.href='/upload';
+    return;
+  }
+
+  var type = form.type.value;
+  if(confirm("Are you sure to submit your writeup for " + type + "?")) {
+    form.submit();
+  }
+  else {
+  }
+}
+
+</script>
+<div class="jumbotron">
+	<div class="container">
+    <h1>Score towards the grade for {{ team.name }} </h1>
+	</div>
+</div>
+<div class="container">
+  <p align='center'>
+	<div class="row">
+		<div class="col-md-12">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<td><b>Week</b></td>
+						<td><b>Deadline</b></td>
+            <td><b>On-Time</b></td>
+            <td><b>Late (50%)</b></td>
+            <td><b>Sum</b></td>
+            <td><b>Total</b></td>
+            <td><b>Percent</b></td>
+            <td><b>Expected Grade Range (100%)</b></td>
+					</tr>
+				</thead>
+        <tbody>
+          {% for order in grades['orders'] %}
+            <tr>
+              <td> {{ order }} </td>
+              <td> {{ (grades['deadlines'][order]) }} </td>
+              <td> {{ grades[order]['solved_score'] }} </td>
+              <td> {{ grades[order]['late_score'] }} </td>
+              <td> {{ grades[order]['solved_score'] + grades[order]['late_score'] }} </td>
+              <td> {{ grades[order]['full_score'] }} </td>
+            </tr>
+          {% endfor %}
+            <tr>
+              <td> Total </td>
+              <td> N/A </td>
+              <td> {{ grades['all_score']['solved_score'] }} </td>
+              <td> {{ grades['all_score']['late_score'] }} </td>
+              <td> {{ grades['all_score']['solved_score'] + grades['all_score']['late_score'] }} </td>
+              <td> {{ grades['all_score']['full_score'] }} </td>
+              <td> {{ grades['percent'] }} </td>
+              <td> {{ grades['grade'][0] }} </td>
+            </tr>
+            <tr>
+              <td> </td>
+              <td> </td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td> {{ grades['grade'][1] }} </td>
+            </tr>
+        </tbody>
+        {{ grades['index'] }}
+			</table>
+	</div>
+	</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}
